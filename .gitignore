@@ -1,4 +1,6 @@
 config.toml
+*.db
+*.db-journal
 
 #################### from github template ####################
 
