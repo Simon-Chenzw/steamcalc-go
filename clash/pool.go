@@ -40,11 +40,13 @@ func filter(proxies []constant.Proxy, url string, threshold time.Duration) []con
 
 			req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
 			if err != nil {
+				slog.Warn("create request failed", slog.Any("err", err))
 				return
 			}
 
 			resp, err := Fetch(proxy, req)
 			if err != nil {
+				slog.Warn("fetch request failed", slog.Any("err", err))
 				return
 			}
 			defer resp.Body.Close()

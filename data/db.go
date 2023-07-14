@@ -47,6 +47,7 @@ func GetDataBase() DB {
 func (db *DB) Setup() {
 	slog.Info("Migrating database...")
 	db.AutoMigrate(&Item{})
+	db.AutoMigrate(&ItemInfo{})
 	db.AutoMigrate(&MarketPrice{})
 
 	if res := db.Exec("PRAGMA foreign_keys = ON", nil); res.Error != nil {
